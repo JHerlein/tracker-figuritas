@@ -4,7 +4,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
   
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <div>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item active">
           <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
@@ -22,8 +22,7 @@
           <a class="nav-link" href="{% url 'logout' %}">Logout</a>
         </li>
         
-      </ul>
-      <span id = "span-name">Hello, </span>
+      </ul>      
       <form class="form-inline my-2 my-lg-0" method="GET">
         {% csrf_token %}
         <input class="form-control mr-sm-2" type="search" placeholder="Search country" name = "search_sticker">
