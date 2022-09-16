@@ -23,7 +23,7 @@ def home(request):
             search_text = request.GET.get('search_sticker')              
             request.session['search_sticker'] = search_text            
             user = User.objects.get(username=request.user)
-            user_stickers = UserStickers.objects.filter(country__icontains=search_text,username=user.id)
+            user_stickers = UserStickers.objects.filter(country__icontains=search_text,username=user.id).order_by('id')
             if search_text.upper() == 'FWC':
                 paginator = Paginator(user_stickers, 29)
             if search_text.upper() != 'FWC':
@@ -35,7 +35,7 @@ def home(request):
         #Default view
         except:        
             user = User.objects.get(username=request.user)
-            user_stickers = UserStickers.objects.filter(username=user.id)
+            user_stickers = UserStickers.objects.filter(username=user.id).order_by('id')
             paginator = Paginator(user_stickers, 19)
             page_number = request.GET.get('page')
             page_obj = paginator.get_page(page_number)
