@@ -1,0 +1,35 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<h1>Hello {{request.user}}, you are seeing {{user.username}}'s profile</h1>
+
+<span><a href="{% url 'exchange' user.username %}">View stickers for exchange</a></span>
+
+<center>
+    <table border = "5">
+
+        <tr>
+            <th>Sticker</th>
+            <th>Country</th>              
+            <th>Repeated</th>
+            <th>Count</th>
+        </tr>
+
+        {% for user_sticker in user_stickers %}       
+
+        <tr>
+            <td>{{user_sticker.id_complete}}</td>
+            <td>{{user_sticker.country}}</td>
+            <td>{{user_sticker.repeated}}</td>
+            <td>{{user_sticker.count}}</td>                  
+        </tr>    
+
+        {% endfor %}
+
+    </table>
+</center>
+
+
+
+{% endblock %}

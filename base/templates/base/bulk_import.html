@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<h1>Bulk import</h1>
+
+{% for message in messages %}
+    <p id="messages">{{message}}</p>
+{% endfor %}
+
+<form class="form-inline my-4 my-lg-0" method="POST">
+    {% csrf_token %}
+    <!-- <input class="form-control mr-sm-2" type="search" placeholder="Import stickers" name = "bulk_import"> -->
+    <div>
+        <textarea name="bulk_import"cols="250" rows="10" style="margin-left: 30px;"></textarea>
+    </div>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit file</button>            
+</form>
+
+{% endblock %}

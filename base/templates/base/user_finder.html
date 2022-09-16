@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<h1>User finder</h1>
+
+<form class="form-inline my-4 my-lg-0" method="POST">
+    {% csrf_token %}
+    <input class="form-control mr-sm-2" type="search" placeholder="Search user" name = "search_user">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+
+
+
+{% for user in users %}
+
+    <ul>
+        <a href="{% url 'userPublicProfile' user %}" id='btn-add'>{{user}}</a>
+    </ul>
+
+{% endfor %}
+
+{% endblock %}

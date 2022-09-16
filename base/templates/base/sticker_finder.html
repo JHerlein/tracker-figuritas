@@ -1,0 +1,38 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<h1>Sticker finder</h1>
+
+<form class="form-inline my-4 my-lg-0" method="POST">
+    {% csrf_token %}
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-right: 10px;">Search</button>
+    <label for=""><input type="checkbox" name='checkbox-nolas' style="margin-right: 10px;">Search all don't have stickers</label>      
+</form>
+
+<form class="form-inline my-4 my-lg-0" method="POST">
+    {% csrf_token %}
+    <input class="form-control mr-sm-2" type="search" placeholder="Search sticker" name = "search_sticker">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add</button>        
+</form>
+
+<ul>
+{% for sticker in sticker_session %}
+    <li>{{sticker}}</li>
+{% endfor %}
+</ul>
+
+<ul>
+{% for user_order in sortedKeys %}        
+    {% for key,value in users.items %}        
+        {% if key.username == user_order.username %}
+            <li>
+                <a href="{% url 'userPublicProfile' key %}" id='btn-add'>{{key}}</a>
+                {{value.stickers}}
+            </li>
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+</ul>
+
+{% endblock %}

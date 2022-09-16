@@ -1,0 +1,55 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<h1>Hello {{request.user}}</h1><span>
+    
+<center>
+    <table border = "5">
+
+        <tr>
+            <th>Sticker</th>
+            <th>Country</th>              
+            <th>Repeated</th>
+            <th>Count</th>
+        </tr>
+
+        {% for user_sticker in page_obj %}       
+
+        <tr>
+            <td>{{user_sticker.id_complete}}</td>
+            <td>{{user_sticker.country}}</td>
+            <td>{{user_sticker.repeated}}</td>
+            <td>{{user_sticker.count}}</td>
+            <td><a href="{% url 'addSticker' user_sticker.id_complete user_sticker.username %}" id='btn-add'>+1</a></td>
+            <td><a href="{% url 'subSticker' user_sticker.id_complete user_sticker.username %}" id='btn-sub'>-1</a></td>         
+        </tr>    
+
+        {% endfor %}
+
+    </table>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    
+</center>
+
+
+
+{% endblock %}
+
