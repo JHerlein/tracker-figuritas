@@ -29,6 +29,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['https://frozen-meadow-66422.herokuapp.com']
 
+CSRF_TRUSTED_ORIGINS = ['https://frozen-meadow-66422.herokuapp.com']
+
+
 
 # Application definition
 
