@@ -27,9 +27,9 @@ SECRET_KEY = "django-insecure-^m7eztmcdybg_r!vt*%pklb(+o)fv1t00bamg&sts(vl@#^rl#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://frozen-meadow-66422.herokuapp.com/']
 
-#CSRF_TRUSTED_ORIGINS = ['https://frozen-meadow-66422.herokuapp.com/']
+CSRF_TRUSTED_ORIGINS = ['https://frozen-meadow-66422.herokuapp.com/']
 
 
 
@@ -139,5 +139,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-# import django_heroku
-# django_heroku.settings(locals())
+import django_heroku
+django_heroku.settings(locals())
