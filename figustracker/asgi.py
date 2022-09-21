@@ -16,13 +16,13 @@ import base.routing
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "figustracker.settings")
 
-application = ProtocolTypeRouter({
-    'http': get_asgi_application(),
-    'websocket':AuthMiddlewareStack(
-        URLRouter(
-            base.routing.websocket_urlpatterns
-        )
-    )
-})
+# application = ProtocolTypeRouter({
+#     'http': get_asgi_application(),
+#     'websocket':AuthMiddlewareStack(
+#         URLRouter(
+#             base.routing.websocket_urlpatterns
+#         )
+#     )
+# })
 
 application = get_asgi_application()
