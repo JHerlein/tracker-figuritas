@@ -27,9 +27,9 @@ SECRET_KEY = "django-insecure-^m7eztmcdybg_r!vt*%pklb(+o)fv1t00bamg&sts(vl@#^rl#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://frozen-meadow-66422.herokuapp.com']
+ALLOWED_HOSTS = ['frozen-meadow-66422.herokuapp.com']
 
-CSRF_TRUSTED_ORIGINS = ['https://frozen-meadow-66422.herokuapp.com']
+CSRF_TRUSTED_ORIGINS = ['frozen-meadow-66422.herokuapp.com']
 
 
 
