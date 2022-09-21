@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<h1>Exchange request from {{request.user}} to {{user2}}</h1>
+
+{% for sticker in user_stickers2 %}
+
+<ul>
+    <li class="sticker-item">{{sticker.id_complete}}</li>
+</ul>
+
+{% endfor %}
+
+{% endblock %}

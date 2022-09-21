@@ -17,7 +17,6 @@ function createExchangeMessage() {
     
     if(textAreaLength < 1){
         divText[0].append(textToAdd)
-    }
-    
+    }    
     
 }

@@ -1,33 +1,46 @@
-<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+<!-- <header>
+  <nav>
+    <ul class="nav__links">
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'userfinder' %}">User finder</a></li>
+      <li><a href="{% url 'stickerfinder' %}">Sticker finder</a></li>
+      <li><a href="{% url 'bulk' %}">Bulk import</a></li>      
+    </ul>
+  </nav>
+  {% load static %}
+  <div class="profile-div">
+    <a href="" class="cta"><img src="{% static '/img/user.png' %}" alt=""> {{request.user}}</a>
+    <a href="{% url 'logout' %}" class="cta"><img src="{% static '/img/logout.png' %}" alt=""></a>
+  </div>
+</header> -->
+
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Figuritas</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
-    <div>
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-          <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'userfinder' %}">User Finder</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'stickerfinder' %}">Sticker Finder</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'bulk' %}">Bulk Import</a>
-        </li>        
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-        </li>
-        
-      </ul>      
-      <form class="form-inline my-2 my-lg-0" method="GET">
-        {% csrf_token %}
-        <input class="form-control mr-sm-2" type="search" placeholder="Search country" name = "search_sticker">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Figuritas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'userfinder' %}">User finder</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'stickerfinder' %}">Sticker finder</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'bulk' %}">Bulk</a>
+          </li>
+        </ul>
+      </div>
     </div>
-    
-  </nav>
+  </div>
+</nav>

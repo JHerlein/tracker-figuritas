@@ -16,7 +16,14 @@ import time
 
 # Create your views here.
 @login_required(login_url='login')
-def home(request):    
+def home(request):
+    countries1 = [
+    'FWC','QAT','ECU','SEN','NED','ENG','IRN','USA','WAL','ARG','KSA','MEX','POL','FRA','AUS','DEN','TUN'
+    ]  
+
+    countries2 = [
+    'ESP','CRC','GER','JPN','BEL','CAN','MAR','CRO','BRA','SRB','SUI','CMR','POR','GHA','URU','KOR'
+    ]   
     if request.method == "GET":
         #Search view
         try:            
@@ -31,7 +38,7 @@ def home(request):
             page_number = request.GET.get('page')            
             page_obj = paginator.get_page(page_number)
             request.session['page_number'] = None
-            return render(request,'base/home.html', {'page_obj':page_obj,'user':user})
+            return render(request,'base/home.html', {'page_obj':page_obj, 'user':user, 'countries1':countries1, 'countries2':countries2})
         #Default view
         except:        
             user = User.objects.get(username=request.user)
@@ -42,7 +49,7 @@ def home(request):
             if page_number is None:
                 page_number = '1'
             request.session['page_number'] = page_number
-            return render(request,'base/home.html', {'page_obj':page_obj, 'user':user})
+            return render(request,'base/home.html', {'page_obj':page_obj, 'user':user, 'countries1':countries1, 'countries2':countries2})
 
 @login_required(login_url='login')
 def addSticker(request, pk, username):
@@ -163,7 +170,6 @@ def userPublicProfile(request, username):
 def getExchangeStickers(request, username):
     user1 = User.objects.get(username=request.user)
     user_stickers1 = UserStickers.objects.filter(username=user1.id,count__exact=0).values('id_complete')
-    print(user_stickers1)
     user2 = User.objects.get(username=username)    
     user_stickers2 = UserStickers.objects.filter(username=user2.id, count__gte=2, id_complete__in = user_stickers1)    
     context = {'user_stickers2':user_stickers2,'user2':user2}
@@ -240,4 +246,16 @@ def importBulk(request):
         return redirect('bulk')
 
     return render(request,'base/bulk_import.html',{})
+
+def exchangeRequest(request,username):
+    user1 = User.objects.get(username=request.user)
+    user_stickers1 = UserStickers.objects.filter(username=user1.id,count__exact=0).values('id_complete')
+    user2 = User.objects.get(username=username)    
+    user_stickers2 = UserStickers.objects.filter(username=user2.id, count__gte=2, id_complete__in = user_stickers1)    
+    context = {'user_stickers2':user_stickers2,'user2':user2}
+    return render(request, 'base/exchange_request.html', context)
+
+def lobbyChat(request):
+    return render(request, 'base/lobby.html')
+
     

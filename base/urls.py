@@ -13,7 +13,9 @@ urlpatterns = [
     path('profile/<str:username>', views.userPublicProfile, name = 'userPublicProfile'),
     path('exchange/<str:username>', views.getExchangeStickers, name = 'exchange'),
     path('stickerfinder/', views.getSticker, name = 'stickerfinder'),
-    path('bulkimport/', views.importBulk, name = 'bulk')
+    path('bulkimport/', views.importBulk, name = 'bulk'),
+    path('exchangerequest/<str:username>', views.exchangeRequest, name = 'exchangerequest'),
+    path('lobby/', views.lobbyChat, name='lobby')
 
 ]
 

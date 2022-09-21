@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-^m7eztmcdybg_r!vt*%pklb(+o)fv1t00bamg&sts(vl@#^rl#"
+#SECRET_KEY = "django-insecure-^m7eztmcdybg_r!vt*%pklb(+o)fv1t00bamg&sts(vl@#^rl#"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -36,6 +36,7 @@ CSRF_TRUSTED_ORIGINS = ['https://frozen-meadow-66422.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
+    "channels",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -44,6 +45,14 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "base"
 ]
+
+ASGI_APPLICATION = 'figustracker.asgi.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer'
+    }
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
