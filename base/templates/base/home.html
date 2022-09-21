@@ -6,10 +6,10 @@
     <div class="row" >
         <div class="col-2 filter-list mt-lg-5 pt-3 mt-1">
             {% for country1 in countries1 %}
-                <a href="http://localhost:8080/?search_sticker={{country1}}"><li>{{country1}}</li></a>
+                <a href="?search_sticker={{country1}}"><li>{{country1}}</li></a>
             {% endfor %}
             {% for country2 in countries2 %}
-                <a href="http://localhost:8080/?search_sticker={{country2}}"><li>{{country2}}</li></a>
+                <a href="?search_sticker={{country2}}"><li>{{country2}}</li></a>
             {% endfor %}
         </div>
         <div class="col-10">
