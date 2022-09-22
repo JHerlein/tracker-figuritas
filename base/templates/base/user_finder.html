@@ -2,22 +2,34 @@
 
 {% block content %}
 
-<h1>User finder</h1>
-
-<form class="form-inline my-4 my-lg-0" method="POST">
-    {% csrf_token %}
-    <input class="form-control mr-sm-2" type="search" placeholder="Search user" name = "search_user">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-</form>
 
 
+<div class="container col-lg-4 col-8 mt-2 position-relative">
+    <div class="row">
+    
+        <h2>User finder</h2>
 
-{% for user in users %}
+        <form class="form-inline my-1 my-lg-0" method="POST">
+            {% csrf_token %}
+            <input class="form-control" type="search" placeholder="Search user" name = "search_user">
+            <button class="btn btn-outline-success my-2 my-sm-0 mt-lg-2" type="submit">Search</button>
+        </form>
+    </div>
+        
 
-    <ul>
-        <a href="{% url 'userPublicProfile' user %}" id='btn-add'>{{user}}</a>
-    </ul>
+        <div class="row mt-lg-2 text-center">        
+        {% for user in users %}
+        
+                <ul>
+                    <a href="{% url 'userPublicProfile' user %}" id='btn-add'>{{user}}</a>
+                </ul>
+            
+        
+        {% endfor %}
+        </div>
+    
 
-{% endfor %}
+</div>
+
 
 {% endblock %}

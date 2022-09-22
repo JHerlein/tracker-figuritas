@@ -4,19 +4,20 @@
 
 <div class="container col-12">
     <div class="row" >
-        <div class="col-2 filter-list mt-lg-5 pt-3 mt-1">
+        <div class="col-2 filter-list pt-3 mt-1">
+            <h6>Countries</h6>
             {% for country1 in countries1 %}
                 <a href="?search_sticker={{country1}}"><li>{{country1}}</li></a>
             {% endfor %}
             {% for country2 in countries2 %}
                 <a href="?search_sticker={{country2}}"><li>{{country2}}</li></a>
             {% endfor %}
-        </div>
-        <div class="col-10">
-            <table class="table table-dark table-hover table-sm mt-lg-5 mt-2">
+        </div>        
+        <div class="col-8 mt-4 ms-4 pt-lg-2">
+            <table class="table table-light table-hover table-sm">
                 <thead>
                     <tr>
-                        <th>Sticker</th>
+                        <th>Sticker⠀</th>
                         <th>Country</th>
                         <th>Count</th>
                         <th></th>
@@ -42,7 +43,7 @@
     </div>
 </div>
 
-<div class="pagination">
+<!-- <div class="pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}
             <a href="?page=1">&laquo; first</a>
@@ -58,7 +59,7 @@
             <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
         {% endif %}
     </span>    
-</div>
+</div> -->
 
 
     

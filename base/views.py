@@ -157,15 +157,40 @@ def getUser(request):
         
 
 def userPublicProfile(request, username):
-    user = User.objects.get(username=username)
-    user_stickers = UserStickers.objects.filter(username=user.id)
-    paginator = Paginator(user_stickers, 19)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    if page_number is None:
-        page_number = '1'
-    request.session['page_number'] = page_number    
-    return render(request,'base/profile.html', {'page_obj':page_obj, 'user':user})
+    countries1 = [
+    'FWC','QAT','ECU','SEN','NED','ENG','IRN','USA','WAL','ARG','KSA','MEX','POL','FRA','AUS','DEN','TUN'
+    ]  
+
+    countries2 = [
+    'ESP','CRC','GER','JPN','BEL','CAN','MAR','CRO','BRA','SRB','SUI','CMR','POR','GHA','URU','KOR'
+    ]   
+    if request.method == "GET":
+        #Search view
+        try:            
+            search_text = request.GET.get('search_sticker')              
+            request.session['search_sticker'] = search_text            
+            user = User.objects.get(username=username)
+            user_stickers = UserStickers.objects.filter(country__icontains=search_text,username=user.id).order_by('id')
+            if search_text.upper() == 'FWC':
+                paginator = Paginator(user_stickers, 29)
+            if search_text.upper() != 'FWC':
+                paginator = Paginator(user_stickers, 19)       
+            page_number = request.GET.get('page')            
+            page_obj = paginator.get_page(page_number)
+            request.session['page_number'] = None
+            return render(request,'base/profile.html', {'page_obj':page_obj, 'user':user, 'countries1':countries1, 'countries2':countries2})
+        #Default view
+        except:        
+            user = User.objects.get(username=username)
+            user_stickers = UserStickers.objects.filter(username=user.id).order_by('id')
+            paginator = Paginator(user_stickers, 19)
+            page_number = request.GET.get('page')
+            page_obj = paginator.get_page(page_number)
+            if page_number is None:
+                page_number = '1'
+            request.session['page_number'] = page_number
+            return render(request,'base/profile.html', {'page_obj':page_obj, 'user':user, 'countries1':countries1, 'countries2':countries2})
+
 
 def getExchangeStickers(request, username):
     user1 = User.objects.get(username=request.user)
