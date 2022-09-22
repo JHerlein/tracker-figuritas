@@ -32,7 +32,7 @@ def home(request):
             user = User.objects.get(username=request.user)
             user_stickers = UserStickers.objects.filter(country__icontains=search_text,username=user.id).order_by('id')
             if search_text.upper() == 'FWC':
-                paginator = Paginator(user_stickers, 29)
+                paginator = Paginator(user_stickers, 30)
             if search_text.upper() != 'FWC':
                 paginator = Paginator(user_stickers, 19)       
             page_number = request.GET.get('page')            
@@ -172,7 +172,7 @@ def userPublicProfile(request, username):
             user = User.objects.get(username=username)
             user_stickers = UserStickers.objects.filter(country__icontains=search_text,username=user.id).order_by('id')
             if search_text.upper() == 'FWC':
-                paginator = Paginator(user_stickers, 29)
+                paginator = Paginator(user_stickers, 30)
             if search_text.upper() != 'FWC':
                 paginator = Paginator(user_stickers, 19)       
             page_number = request.GET.get('page')            
