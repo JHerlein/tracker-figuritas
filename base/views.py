@@ -121,7 +121,7 @@ def register(request):
             id = country + ' ' +str(i)
             id_completed.append(id)
 
-    for i in range(1,30):
+    for i in range(0,30):
             id =  'FWC ' +str(i)
             id_completed.append(id)    
 
