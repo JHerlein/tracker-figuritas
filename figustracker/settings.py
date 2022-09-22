@@ -31,8 +31,6 @@ ALLOWED_HOSTS = ['https://frozen-meadow-66422.herokuapp.com/']
 
 CSRF_TRUSTED_ORIGINS = ['https://frozen-meadow-66422.herokuapp.com/']
 
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -45,7 +43,7 @@ INSTALLED_APPS = [
     "base"
 ]
 
-ASGI_APPLICATION = 'figustracker.asgi.application'
+#ASGI_APPLICATION = 'figustracker.asgi.application'
 
 CHANNEL_LAYERS = {
     'default': {
