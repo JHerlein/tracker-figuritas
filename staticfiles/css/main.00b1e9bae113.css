@@ -1,0 +1,153 @@
+body{   
+    min-height: 100vh;
+    background-color: #ebebeb   
+        
+}
+
+footer{
+    margin-top: auto;
+}
+
+#span-name{
+    color: white;
+}
+
+
+
+.table-home{        
+    margin-top: 100px;
+    margin-left: 50%    ;
+    margin-right: auto;
+    margin-bottom: auto;
+}
+
+.pagination{
+    margin-left: 47%;
+}
+
+.country-filter{
+    background-color: #9f8675;
+    margin: 0px 10px;
+    list-style: none;
+       
+}
+
+.filter-panel {
+    width: 5%; 
+    float: left
+}
+
+.table-panel {
+    width: 95%; 
+    float: right
+}
+
+table {
+    background: #bdc3c7;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Nunito:wght@200&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;    
+}
+
+ul{
+    margin-bottom: 0;
+}
+
+li, a {
+    font-family: "Monserrant", sans-serif;
+    font-weight: 500;
+    font-size: 16px;    
+    text-decoration: none;
+}
+
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 20px;
+    background-color: #545557;
+    height: 50px;
+}
+
+.nav__links {
+    list-style: none;
+
+}
+
+.nav__links li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav__links li a {
+    transition: all 0.3s ease 0s;
+    color: #edf0f1;
+
+}
+
+.nav__links li a:hover {
+    color: #0088a9;
+    
+}
+
+.profile-div {
+    text-decoration: none
+}   
+
+.profile-div:hover {
+    text-decoration: none
+}
+
+.user_card {
+    width: 350px;
+    margin-top: auto;
+    margin-bottom: auto;
+    background: #74cfbf;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+
+}
+
+.filter-list li {
+    font-size: small;
+    list-style: none;
+    color: black;
+}
+
+.filter-have a {
+    font-size: small;
+    list-style: none;
+    color: black;
+}
+
+nav{
+    background: #0088a9;
+}
+
+tr {
+    line-height: 20px;
+    min-height: 20px;
+    height: 20px;
+ }
+
+
+
+
+

@@ -26,22 +26,37 @@ def home(request):
     ]   
     if request.method == "GET":
         #Search view
-        try:            
-            search_text = request.GET.get('search_sticker')              
-            request.session['search_sticker'] = search_text            
-            user = User.objects.get(username=request.user)
-            user_stickers = UserStickers.objects.filter(country__icontains=search_text,username=user.id).order_by('id')
-            if search_text.upper() == 'FWC':
-                paginator = Paginator(user_stickers, 30)
-            if search_text.upper() != 'FWC':
-                paginator = Paginator(user_stickers, 19)       
-            page_number = request.GET.get('page')            
-            page_obj = paginator.get_page(page_number)
-            request.session['page_number'] = None
-            return render(request,'base/home.html', {'page_obj':page_obj, 'user':user, 'countries1':countries1, 'countries2':countries2})
-        #Default view
-        except:        
-            user = User.objects.get(username=request.user)
+        # try:
+                       
+        #     search_text = request.GET.get('search_sticker')              
+        #     request.session['search_sticker'] = search_text            
+        #     user = User.objects.get(username=request.user)
+        #     user_stickers = UserStickers.objects.filter(country__icontains=search_text,username=user.id).order_by('id')
+        #     if search_text.upper() == 'FWC':
+        #         paginator = Paginator(user_stickers, 30)
+        #     if search_text.upper() != 'FWC':
+        #         paginator = Paginator(user_stickers, 19)       
+        #     page_number = request.GET.get('page')            
+        #     page_obj = paginator.get_page(page_number)
+        #     request.session['page_number'] = None
+        #     return render(request,'base/home.html', {'page_obj':page_obj, 'user':user, 'countries1':countries1, 'countries2':countries2})
+        # #Default view
+        # except:        
+        #     user = User.objects.get(username=request.user)
+        #     user_stickers = UserStickers.objects.filter(username=user.id).order_by('id')
+        #     paginator = Paginator(user_stickers, 19)
+        #     page_number = request.GET.get('page')
+        #     page_obj = paginator.get_page(page_number)
+        #     if page_number is None:
+        #         page_number = '1'
+        #     request.session['page_number'] = page_number
+        #     return render(request,'base/home.html', {'page_obj':page_obj, 'user':user, 'countries1':countries1, 'countries2':countries2})
+
+                            
+        search_text = request.GET.get('search_sticker')
+        figuritas = request.GET.get('figuritas')        
+        user = User.objects.get(username=request.user)
+        if (search_text is None) and (figuritas is None):
             user_stickers = UserStickers.objects.filter(username=user.id).order_by('id')
             paginator = Paginator(user_stickers, 19)
             page_number = request.GET.get('page')
@@ -49,7 +64,50 @@ def home(request):
             if page_number is None:
                 page_number = '1'
             request.session['page_number'] = page_number
-            return render(request,'base/home.html', {'page_obj':page_obj, 'user':user, 'countries1':countries1, 'countries2':countries2})
+        if (search_text is not None) and (figuritas is not None) :
+            user_stickers = UserStickers.objects.filter(country__icontains=search_text,username=user.id).order_by('id')
+            request.session['search_sticker'] = search_text            
+            paginator = Paginator(user_stickers, 19)
+            page_number = request.GET.get('page')            
+            page_obj = paginator.get_page(page_number)
+            request.session['page_number'] = None
+            if search_text.upper() == 'FWC':
+                paginator = Paginator(user_stickers, 30)
+            if search_text.upper() != 'FWC':
+                paginator = Paginator(user_stickers, 19)
+        if (search_text is not None) and (figuritas is None) :
+            user_stickers = UserStickers.objects.filter(country__icontains=search_text,username=user.id).order_by('id')
+            request.session['search_sticker'] = search_text
+            paginator = Paginator(user_stickers, 19)
+            page_number = request.GET.get('page')            
+            page_obj = paginator.get_page(page_number)
+            request.session['page_number'] = None
+            if search_text.upper() == 'FWC':
+                paginator = Paginator(user_stickers, 30)
+            if search_text.upper() != 'FWC':
+                paginator = Paginator(user_stickers, 19)
+        if (search_text is None) and (figuritas is not None) :
+            request.session['figuritas'] = figuritas
+            nola = False
+            if figuritas == 'nola':
+                nola = True 
+            if nola:
+                user_stickers = UserStickers.objects.filter(count=0,username=user.id).order_by('id')
+            if not nola:
+                if figuritas == 'todas':
+                    count_to_filter = 0
+                if figuritas == 'late':
+                    count_to_filter = 1
+                if figuritas == 'repetidas':
+                    count_to_filter = 2                           
+                user_stickers = UserStickers.objects.filter(count__gte=count_to_filter,username=user.id).order_by('id')
+            paginator = Paginator(user_stickers, 19)
+            page_number = request.GET.get('page')            
+            page_obj = paginator.get_page(page_number)
+            request.session['page_number'] = None
+            paginator = Paginator(user_stickers, 19)
+        return render(request,'base/home.html', {'page_obj':page_obj, 'user':user, 'countries1':countries1, 'countries2':countries2})
+    
 
 @login_required(login_url='login')
 def addSticker(request, pk, username):

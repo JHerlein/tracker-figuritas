@@ -1,5 +1,6 @@
 body{   
-    min-height: 100vh;   
+    min-height: 100vh;
+    background-color: #ebebeb   
         
 }
 
@@ -60,7 +61,7 @@ ul{
     margin-bottom: 0;
 }
 
-li, a, button {
+li, a {
     font-family: "Monserrant", sans-serif;
     font-weight: 500;
     font-size: 16px;    
@@ -99,19 +100,6 @@ header {
     
 }
 
-button {
-    padding: 9px 25px;
-    background-color: rgba(0,136,169,1);
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease 0s;
-}
-
-button:hover {
-    background-color: rgba(0,136,169,0.8);
-}
-
 .profile-div {
     text-decoration: none
 }   
@@ -140,13 +128,34 @@ button:hover {
 .filter-list li {
     font-size: small;
     list-style: none;
+    color: black;
+}
+
+.filter-have a {
+    font-size: small;
+    list-style: none;
+    color: black;
 }
 
 nav{
-    background: #bdc3c7;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    background: #0088a9;
 }
+
+tr {
+    line-height: 20px;
+    min-height: 20px;
+    height: 20px;
+ }
+
+.visible{
+    display: block;
+}
+
+.invisible{
+    display: none;
+}
+
+
+
 
 

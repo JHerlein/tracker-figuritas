@@ -3,7 +3,13 @@
 {% block content %}
 
 <div class="container col-12">
+    <div class="row">
+        <div class="col-6 mt-1 pt-1">
+            <button onclick="ShowFilters(this)">Ocultar Filtros</button>                         
+        </div>
+    </div>
     <div class="row" >
+        
         <div class="col-2 filter-list pt-3 mt-1">
             <h6>Countries</h6>
             {% for country1 in countries1 %}
@@ -12,14 +18,28 @@
             {% for country2 in countries2 %}
                 <a href="?search_sticker={{country2}}"><li>{{country2}}</li></a>
             {% endfor %}
-        </div>        
-        <div class="col-8 mt-4 ms-4 pt-lg-2">
+        </div>
+        <div class="col-2 filter-list pt-3 ms-4 mt-1">
+            <div class="row">
+                <h6>Have</h6>            
+                <a href="?figuritas=todas"><li>All</li></a>            
+                <a href="?figuritas=late"><li>Late</li></a>
+                <a href="?figuritas=nola"><li>Nola</li></a>
+                <a href="?figuritas=repetidas"><li>Repetidas</li></a>
+            </div>
+            <hr>
+            <div class="row">
+                <a href="{% url 'home' %}" style="font-size: 12px;">Remove filters</a>
+            </div>
+        </div>
+        
+        <div class="col-4 mt-2 ms-2" id="main-table">
             <table class="table table-light table-hover table-sm">
                 <thead>
                     <tr>
-                        <th>Sticker⠀</th>
-                        <th>Country</th>
-                        <th>Count</th>
+                        <th class="text-center">Sticker⠀</th>
+                        <!-- <th>Country</th> -->
+                        <th class="text-center">Count</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -27,15 +47,13 @@
                 <tbody>
                     {% for user_sticker in page_obj %}
                     <tr>
-                        <td>{{user_sticker.id_complete}}</td>
-                        <td>{{user_sticker.country}}</td>
-                        <td>{{user_sticker.count}}</td>
+                        <td class="text-center">{{user_sticker.id_complete}}</td>
+                        <!-- <td>{{user_sticker.country}}</td> -->
+                        <td class="text-center">{{user_sticker.count}}</td>
                         <td><a href="{% url 'addSticker' user_sticker.id_complete user_sticker.username %}" id='btn-add'>+1</a></td>
                         <td><a href="{% url 'subSticker' user_sticker.id_complete user_sticker.username %}" id='btn-sub'>-1</a></td>         
-                    </tr>    
-        
+                    </tr>
                     {% endfor %}
-
                 </tbody>
             </table>
         </div>
@@ -60,6 +78,7 @@
         {% endif %}
     </span>    
 </div> -->
+
 
 
     
