@@ -23,7 +23,7 @@ function createExchangeMessage() {
 
 function ShowFilters(e){    
     table = document.getElementById('main-table')
-    filters = document.getElementsByClassName('filter-list')    
+    filters = document.getElementsByClassName('filter-list')        
     if(table.classList.value === "col-4 mt-2 ms-2"){        
         filters[0].classList.toggle("invisible")
         filters[1].classList.toggle("invisible")
